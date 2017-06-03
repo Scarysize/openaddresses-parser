@@ -1,0 +1,3 @@
+PKG stream command core
+S src/**
+B _build/**
