@@ -6,7 +6,7 @@ const [inputFile, outputFile] = process.argv.slice(2, 4);
 
 if (!inputFile || !outputFile) process.exit(1);
 
-const parseLine = line => line.split(',').slice(0, 2).join(',') + '\n';
+const parseLine = line => /[A-Z0-9\.\-]+,[A-Z0-9\.\-]+/.exec(line)[0];
 const lineReader = readline.createInterface({
   input: fs.createReadStream(inputFile)
 });
