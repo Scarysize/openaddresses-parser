@@ -1,5 +1,7 @@
 # Parse Open Addresses CSVs
 
+Handles **big-ass** CSV files using Streams with a minimal memory footprint.
+
 Retrieve the longitude and latitude values from a openaddresses CSV:
 
 **Input**
@@ -17,7 +19,7 @@ Retrieve the longitude and latitude values from a openaddresses CSV:
 ## Build
 
 ```sh
-corebuild src/openaddresses_parser.native
+corebuild -pkg str src/openaddresses_parser.native
 ```
 
 ## Usage
@@ -28,9 +30,25 @@ corebuild src/openaddresses_parser.native
 
 ## Bench
 
-| Implementation | Number of lines | Runtime | Memory |
-| -------------- | --------------- | ------- | ------ |
-| ocaml.native   | 14151355        | 12.474s | ~7.6MB |
-| ocaml.byte     | 14151355        | 49.444s | ~8.8MB |
-| node.js        | 14151355        | 38.721s | ~44MB  |
+All run on my MBP 2015, CPU 2,7 GHz Intel Core i5.
+
+Input file:
+- **size:** 1.1GB
+- **lines:** 14.151.355
+
+### String.split
+
+| Implementation | Runtime | Memory |
+| -------------- | ------- | ------ |
+| ocaml.native   | 12.474s | ~7.6MB |
+| ocaml.byte     | 49.444s | ~8.8MB |
+| node.js        | 38.721s | ~44MB  |
+
+### Regex
+
+| Implementation | Runtime | Memory   |
+| -------------- | ------- | ------   |
+| ocaml.native   | 8.294s  | ~7.1MB   |
+| ocaml.byte     | 11.097s | ~8.0MB   |
+| node.js        | 19.423s | ~46.0MB  |
 
