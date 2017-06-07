@@ -52,3 +52,17 @@ Input file:
 | ocaml.byte     | 11.097s | ~8.0MB   |
 | node.js        | 19.423s | ~46.0MB  |
 
+---
+
+Input file:
+- **size:** 6.6GB
+- **lines:** 84.908.130
+
+### Regex
+
+| Implementation | Runtime | Memory   |
+| -------------- | ------- | ------   |
+| ocaml.native   | 141.034s  | ~7.7MB   |
+| ocaml.byte     | 145.957s | ~8.2MB   |
+| node.js        | 156.983s | ~89.0MB  |
+
