@@ -41,7 +41,8 @@ make clean
 
 ## Bench
 
-All run on my MBP 2015, CPU 2,7 GHz Intel Core i5.
+All run on my MBP 2015, CPU 2,7 GHz Intel Core i5. Might not be most recent results.
+Run `make bench` to get timings.
 
 Input file:
 - **size:** 1.1GB
