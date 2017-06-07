@@ -16,16 +16,27 @@ Retrieve the longitude and latitude values from a openaddresses CSV:
 -74.1507124,4.6652267
 ```
 
+## Requirements
+
+- ocaml, install via [OPAM](https://opam.ocaml.org/doc/Install.html)
+
 ## Build
 
 ```sh
-corebuild -pkg str src/openaddresses_parser.native
+# optional, installs corebuild
+make
+
+# builds .byte & .native executable in the root directory
+make build
+
+# removes build artifacts
+make clean
 ```
 
 ## Usage
 
 ```sh
-./openaddresses_parser.native <input> -o <ouput>
+./parseCSV.{native|byte} <input> -o <ouput>
 ```
 
 ## Bench
