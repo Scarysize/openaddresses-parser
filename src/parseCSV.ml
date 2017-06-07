@@ -2,10 +2,12 @@ open Core
 open Sys
 open Printf
 open Parser
+open FileWriter
 
-let file_writer output =
-  let out = open_out output in
-  (output_string out, (fun () -> close_out out));;
+let start_parsing input output () =
+  let (write_line, finish) = FileWriter.create output in
+  Parser.parse input write_line;
+  finish ();;
 
 let file_exists filename =
   match Sys.file_exists filename with
@@ -23,16 +25,10 @@ let spec =
     +> flag "-o" (required file) ~doc:"the output file"
   )
 
-let execute_command input output () =
-  let (write_line, finish) = file_writer output in
-  Parser.parse input (write_line);
-  finish ();;
-
 let command =
   Command.basic
     ~summary: "Parse latitude and longitude values from an openaddresses CSV file."
     spec
-    execute_command;;
+    start_parsing;;
 
-let () =
-  Command.run ~version:"0.0.0" ~build_info:"foo" command;;
+Command.run command;;
